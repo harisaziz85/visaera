@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+.stroke-text {
+  -webkit-text-stroke: 1px black; /* Outline thickness and color */
+}
+
+.strip-container {
+  overflow: hidden;
+  /* background: #1c9495; */
+  white-space: nowrap;
+}
+
+.strip-track {
+  display: inline-flex;
+  animation: scroll var(--speed, 25s) linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

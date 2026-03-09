@@ -1,0 +1,59 @@
+
+import EVisaCountryPage from "@/components/EVisaCountryPage";
+import Image from "next/image";
+
+export default function BulgariaEvisa() {
+  return (
+    <EVisaCountryPage
+      country="Bulgaria"
+      title="Apply Bulgaria E-Visa"
+      flag="https://flagcdn.com/w320/bg.png"
+      heroImage="https://images.unsplash.com/photo-1649932544138-081d3dfa61d6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVsZ2FyaWElMjBuYXR1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600"
+      ImageComponent={Image}
+      quickFacts={{
+        items: [
+          { label: "Stay length", value: "Up to 90 days" },
+          { label: "Validity", value: "90 days (enter within)" },
+          { label: "Processing", value: "≈ 3 working days" },
+        ],
+      }}
+      visaTypes={{
+        items: [
+          { name: "eTA – Tourism", who: "Leisure travel" },
+          { name: "eTA – Business", who: "Meetings & events" },
+        ],
+      }}
+      documents={{
+        required: [
+          "Passport bio page (6+ months validity)",
+          "Recent passport photo",
+          "Return/onward ticket & hotel booking",
+          "Email address",
+          "Card for payment",
+        ],
+        downloads: [{ label: "Image Guidelines – Photo Specifications", href: "/docs/Bulgaria-photo-guidelines.pdf" }],
+      }}
+      processingStages={[
+        { title: "Register & form", desc: "Official E-Visa portal" },
+        { title: "Upload & pay", desc: "Secure checkout" },
+        { title: "Decision", desc: "eTA via email" },
+        { title: "Travel", desc: "Present E-Visa on arrival" },
+      ]}
+      howItWorksSteps={[
+        { title: "Start", desc: "We guide step-by-step" },
+        { title: "Doc review", desc: "Avoid rejections" },
+        { title: "Submit & track", desc: "Email updates" },
+      ]}
+      travelRulesItems={[
+        { title: "Single entry", content: "eTA is generally single entry" },
+        { title: "Yellow fever (if applicable)", content: "Carry certificate if arriving from risk areas" },
+      ]}
+      faqs={[
+        { q: "Is E-Visa a visa?", a: "It replaces visas for most travelers; authorization required before travel." },
+        { q: "When to apply?", a: "At least 3 business days before departure." },
+      ]}
+      whatsappHref="https://wa.me/306973931683"
+      ctaHref="/apply/Bulgaria"
+    />
+  );
+}

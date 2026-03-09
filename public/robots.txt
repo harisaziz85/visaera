@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Disallow unfinished sections (optional)
+Disallow: /drafts/
+Disallow: /temp/
+Disallow: /old/
+
+# Ensure duplicate pages do not get indexed
+Disallow: /*?ref=
+Disallow: /*?session=
+Disallow: /*?utm_*
+
+# Technical folders
+Disallow: /_next/
+Disallow: /api/private/
+Disallow: /internal/
+
+# sitemap
+Sitemap: https://yourdomain.com/sitemap.xml
