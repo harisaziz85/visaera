@@ -1,26 +1,42 @@
 import { notFound } from "next/navigation";
-import { studentVisaCountries, getCountryContent } from "@/lib/studentVisa.content";
+import {
+  studentVisaCountries,
+  getCountryContent,
+} from "@/lib/studentVisa.content";
 import StudentVisaCountryDesign from "../_components/StudentVisaCountryDesign";
 
 export const dynamicParams = false;
 
+// ✅ Static params
 export function generateStaticParams() {
   return studentVisaCountries.map(({ name }) => ({ name }));
 }
 
-export function generateMetadata({ params }) {
-  const data = getCountryContent(params.name);
+// ✅ FIXED (async + await params)
+export async function generateMetadata({ params }) {
+  const { name } = await params; // 👈 FIX
+
+  const data = getCountryContent(name);
+
   if (!data) return {};
+
   return {
     title: `Study Visa for ${data.name} — Requirements, Scholarships & FAQs`,
     description: `Everything you need to apply for a ${data.name} student visa: requirements, documents, timelines, scholarships, work options, and FAQs.`,
-    openGraph: { title: `Study in ${data.name}`, images: [{ url: data.heroUrl }] },
+    openGraph: {
+      title: `Study in ${data.name}`,
+      images: [{ url: data.heroUrl }],
+    },
   };
 }
 
-export default function Page({ params }) {
-  const data = getCountryContent(params.name);
-  // console.log("data: ", data)
+// ✅ FIXED PAGE (async + await params)
+export default async function Page({ params }) {
+  const { name } = await params; // 👈 FIX
+
+  const data = getCountryContent(name);
+
   if (!data) return notFound();
+
   return <StudentVisaCountryDesign {...data} />;
 }
